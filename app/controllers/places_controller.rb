@@ -1,17 +1,19 @@
 # frozen_string_literal: true
 
 class PlacesController < ApplicationController
-  before_action :set_place, only: %i[show update destroy]
+  before_action :set_place, only: %i[show edit update destroy]
 
   # GET /places
   # GET /places.json
   def index
-    @places = Place.all
+    @places = Place.term(params[:q]).exclude(params[:exclude])
   end
 
   # GET /places/1
   # GET /places/1.json
   def show; end
+
+  def edit; end
 
   # POST /places
   # POST /places.json

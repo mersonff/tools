@@ -29,5 +29,25 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 
 import { createApp } from 'vue';
 import AppLayout from '@/components/AppLayout.vue';
+import Router from '@/routes.js';
+import Axios from "axios";
+import VueSelect2 from 'vue3-select2-component';
+import $ from 'jquery';
+import select2 from 'select2';
 
-const app = createApp(AppLayout).mount('#app');
+import { createPinia } from 'pinia';
+const Pinia = createPinia();
+Pinia.use(({ store }) => { store.axios = Axios })
+
+import { createApi } from '@/plugins/api';
+const Api = createApi({handler: Axios, namespace: ''});
+
+const app = createApp(AppLayout)
+
+app.use(Router)
+   .use($)
+   .use(select2)
+   .component("v-select", VueSelect2)
+   .use(Pinia)
+   .use(Api)
+   .mount('#app');

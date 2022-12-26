@@ -3,9 +3,17 @@
   "private": "true",
   "dependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
+    "axios": "^1.2.1",
     "bulma": "^0.9.4",
+    "jquery": "^3.6.3",
+    "pinia": "^2.0.28",
     "sass": "^1.57.1",
-    "vue": "^3.2.45"
+    "select2": "^4.1.0-rc.0",
+    "v-select2-component": "^0.4.7",
+    "vue": "^3.2.45",
+    "vue-router": "^4.1.6",
+    "vue-select": "^4.0.0-beta.6",
+    "vue3-select2-component": "^0.1.7"
   },
   "scripts": {
     "build:css": "sass ./app/assets/stylesheets/application.bulma.scss:./app/assets/builds/application.css --no-source-map --load-path=node_modules"
