@@ -26,6 +26,7 @@ export const PlaceStore = defineStore('places', {
     async create() {
       this.errors = {};
       return this.axios.post(`/places`, this.place).then(response => {        
+        debugger
         this.place = response.data.place;
         return true;
       }).catch(error => {
@@ -37,13 +38,13 @@ export const PlaceStore = defineStore('places', {
       this.errors = {};
       this.place = {};
       return this.axios.get(`/places/${id}/edit`).then(response => {      
-        debugger
         this.place = response.data.place;
       })  
     },
     async update(id) {
       this.errors = {};
       return this.axios.put(`/places/${id}`, this.place).then(response => {        
+        this.place = response.data.place;
         return true;
       }).catch(error => {
         this.errors = error.response.data.errors;

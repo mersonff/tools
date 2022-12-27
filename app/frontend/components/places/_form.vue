@@ -1,25 +1,29 @@
 <template lang="">
-  <fieldset>
+  <fieldset class="edit-form">
+    <section class="hero is-info">
+      <div class="hero-body">
+        <p class="title">
+          Local
+        </p>
+        <p class="subtitle">
+          {{ data.place.place_name }}
+        </p>
+      </div>
+    </section>
+    <br>
     <div class="control">
       <label class="label">Nome</label>
       <input type="text" name="name" id="name" class="input" v-model="data.place.name"/>
     </div>
-
+    <br>
     <div class="field">
-      <label class="label">Local</label>
-      <p class="control has-icons-left">
-        <span class="">
-          <v-select :options="ajaxOptions" v-model="place_id" :settings="{ ajax: ajax }" @change="ajaxChangeEvent($event)" @select="ajaxSelectEvent($event)" />
-        </span>
-      </p>
-    </div>
-
-    <div class="field is-grouped buttons">
       <div class="control">
-        <input type="submit" value="Salvar" class="button is-link"/>      
-      </div>
-      <div class="control">
-        <router-link :to="{ name: 'places_path' }" class="button is-link is-light">Cancelar</router-link>
+        <label class="label">Local</label>
+        <p class="control has-icons-left">
+          <span class="">
+            <v-select :options="ajaxOptions" v-model="data.place.place_id" :settings="{ ajax: ajax }" />
+          </span>
+        </p>
       </div>
     </div>
   </fieldset>
@@ -61,34 +65,6 @@ export default {
         ajaxOptionsSelected: null    
       }
   },
-
-  mounted() {
-    this.getPlaces();
-  },
-
-  methods: {
-    getPlaces() {
-      axios.get('/places')
-        .then(response => {
-          this.myOptions = response.data.places.map (place => {
-            return { id: place.id, text: place.name }
-          });
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    },
-
-    ajaxChangeEvent(val) {
-      debugger
-      console.log('ajaxChangeEvent', val);
-      // alert(val);
-    },
-
-    ajaxSelectEvent({ id, text, selected }) {
-      console.log('ajaxChangeEvent', { id, text, selected });
-    },
-  }
 }
 
 </script>
@@ -99,5 +75,9 @@ export default {
 
   select.form-control {
     width: 100%;
+  }
+
+  .edit-form {
+    margin-top: 1rem;
   }
 </style>

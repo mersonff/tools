@@ -6,7 +6,7 @@ class PlacesController < ApplicationController
   # GET /places
   # GET /places.json
   def index
-    @places = Place.term(params[:q]).exclude(params[:exclude])
+    @places = Place.term(params[:q]).order(:name)
   end
 
   # GET /places/1
@@ -21,7 +21,7 @@ class PlacesController < ApplicationController
     @place = Place.new(place_params)
 
     if @place.save
-      render :show, status: :created, location: @place
+      render :edit, status: :created, location: @place
     else
       render json: @place.errors, status: :unprocessable_entity
     end
@@ -31,7 +31,7 @@ class PlacesController < ApplicationController
   # PATCH/PUT /places/1.json
   def update
     if @place.update(place_params)
-      render :show, status: :ok, location: @place
+      render :edit, status: :ok, location: @place
     else
       render json: @place.errors, status: :unprocessable_entity
     end
