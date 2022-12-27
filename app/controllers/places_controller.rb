@@ -3,10 +3,6 @@
 class PlacesController < ApplicationController
   before_action :set_place, only: %i[show edit update destroy]
 
-  def new
-    @place = Place.new
-  end
-
   # GET /places
   # GET /places.json
   def index
@@ -21,6 +17,10 @@ class PlacesController < ApplicationController
   # GET /places/1
   # GET /places/1.json
   def show; end
+
+  def new
+    @place = Place.new
+  end
 
   def edit; end
 
