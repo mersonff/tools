@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_12_24_173310) do
+ActiveRecord::Schema.define(version: 2022_12_27_192639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,5 +23,18 @@ ActiveRecord::Schema.define(version: 2022_12_24_173310) do
     t.index ["place_id"], name: "index_places_on_place_id"
   end
 
+  create_table "tools", force: :cascade do |t|
+    t.integer "code", null: false
+    t.string "name", null: false
+    t.string "brand", null: false
+    t.integer "kind", default: 0, null: false
+    t.text "observations"
+    t.bigint "place_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["place_id"], name: "index_tools_on_place_id"
+  end
+
   add_foreign_key "places", "places"
+  add_foreign_key "tools", "places"
 end

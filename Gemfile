@@ -24,10 +24,10 @@ gem 'cssbundling-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'jbuilder'
-gem 'vite_rails'
-gem 'rack-cors'
 gem 'kaminari'
+gem 'rack-cors'
 gem 'ransack'
+gem 'vite_rails'
 
 group :development, :test do
   gem 'byebug'
