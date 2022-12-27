@@ -44,10 +44,13 @@ const Api = createApi({handler: Axios, namespace: ''});
 
 const app = createApp(AppLayout)
 
+import Pagination from '@/components/Pagination.vue'
+
 app.use(Router)
    .use($)
    .use(select2)
    .component("v-select", VueSelect2)
+   .component('pagination', Pagination)
    .use(Pinia)
    .use(Api)
    .mount('#app');

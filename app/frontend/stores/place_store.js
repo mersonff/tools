@@ -6,13 +6,15 @@ export const PlaceStore = defineStore('places', {
       errors: [],
       children: [],
       place: {},
-      places: []
+      places: [],
+      pagination: {}
     }
   },
 
   actions: {
     async index(path) {
-      return this.axios.get('/places').then(response=> {
+      return this.axios.get(path).then(response=> {
+        this.pagination = response.data.pagination;
         this.places = response.data.places
       });
     },

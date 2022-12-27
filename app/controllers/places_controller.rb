@@ -6,7 +6,10 @@ class PlacesController < ApplicationController
   # GET /places
   # GET /places.json
   def index
-    @places = Place.term(params[:q]).order(:name)
+    @places = Place.term(params[:q])
+      .order(:name)
+      .page(params[:page])
+      .per(params[:per_page])
   end
 
   # GET /places/1

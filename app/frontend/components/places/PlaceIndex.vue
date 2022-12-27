@@ -5,7 +5,7 @@
         <router-link :to="{name: 'new_place_path'}"  class="button is-primary">Novo Local</router-link> 
       </div> 
     </div>
-    <div class="columns is-centered">
+    <div class="columns is-centered" ref="listing">
       <div class="column is-three-quarters">
         <table class="table">
           <thead>
@@ -31,6 +31,7 @@
         </table>
       </div>  
     </div>
+    <pagination v-if="store.pagination" :store="store" @clicked="index"></pagination>
   </div>
 </template>
 <script>
@@ -52,7 +53,7 @@ export default {
   methods: {
 
     index() {
-      this.$api.call(this.store.index(this.$route.fullPath));
+      this.$api.call(this.store.index(this.$route.fullPath), this.$refs.listing);
     },
 
     async deletePlace(id) {

@@ -26,6 +26,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'jbuilder'
 gem 'vite_rails'
 gem 'rack-cors'
+gem 'kaminari'
 
 group :development, :test do
   gem 'byebug'

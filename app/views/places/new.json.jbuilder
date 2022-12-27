@@ -1,3 +1,3 @@
 json.place do
-  json.partial! 'places/place', place: @place
+  json.extract! @place, :name, :place_name, :place_id
 end

@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <router-link :to="{name: 'root_path'}" class="navbar-item">
+    <router-link :to="{name: 'places_path'}" class="navbar-item">
       <img src="@/images/support.png" width="36" height="28">
     </router-link>
 
@@ -15,7 +15,7 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar-start">
-      <router-link :to="{name: 'root_path'}" class="navbar-item">
+      <router-link :to="{name: 'places_path'}" class="navbar-item">
         Home
       </router-link>
       <router-link :to="{name: 'places_path'}" class="navbar-item">

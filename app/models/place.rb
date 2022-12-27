@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Place < ApplicationRecord
+  paginates_per 10
+
   belongs_to :place, optional: true
   has_many :children, class_name: 'Place', dependent: :nullify
 
