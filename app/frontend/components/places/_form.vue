@@ -21,7 +21,7 @@
         <label class="label">Local</label>
         <p class="control has-icons-left">
           <span class="">
-            <v-select :options="ajaxOptions" v-model="data.place.place_id" :settings="{ ajax: ajax }" />
+            <v-select :options="ajaxOptions" v-model="data.place.place_id" :settings="{ ajax: ajax }" class="select2-places" />
           </span>
         </p>
       </div>

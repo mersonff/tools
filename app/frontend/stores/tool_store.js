@@ -4,6 +4,7 @@ export const ToolStore = defineStore('tools', {
   state: () => {
     return {
       errors: [],
+      kinds: [],
       children: [],
       tool: {},
       tools: [],
@@ -15,6 +16,7 @@ export const ToolStore = defineStore('tools', {
     async index(path) {
       return this.axios.get(path).then(response=> {
         this.pagination = response.data.pagination;
+        this.kinds = response.data.kinds;
         this.tools = response.data.tools
       });
     },

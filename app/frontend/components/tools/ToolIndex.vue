@@ -2,7 +2,7 @@
   <div class="container">
     <div class="columns">
       <div class="column is-one-fifths is-offset-9">
-        <router-link :to="{name: 'new_tool_path'}"  class="button is-primary">Novo Local</router-link> 
+        <router-link :to="{name: 'new_tool_path'}"  class="button is-primary">Nova Ferramenta</router-link> 
       </div> 
     </div>
 

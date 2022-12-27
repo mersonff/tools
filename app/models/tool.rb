@@ -10,4 +10,6 @@ class Tool < ApplicationRecord
   validates :brand, presence: true
   validates :kind, presence: true
   validates :code, presence: true, numericality: { only_integer: true }
+
+  delegate :name, to: :place, prefix: true, allow_nil: true
 end
