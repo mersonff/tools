@@ -50,7 +50,9 @@ export default {
             method: 'GET',
             data: function (params) {
               return {
-                q: params.term
+                q: {
+                  name_cont: params.term
+                }
               }
             },
             processResults: function (data) {

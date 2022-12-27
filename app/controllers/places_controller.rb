@@ -6,7 +6,9 @@ class PlacesController < ApplicationController
   # GET /places
   # GET /places.json
   def index
-    @places = Place.term(params[:q])
+    @places = Place
+      .ransack(search_params)
+      .result
       .order(:name)
       .page(params[:page])
       .per(params[:per_page])

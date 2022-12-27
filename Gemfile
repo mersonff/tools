@@ -27,6 +27,7 @@ gem 'jbuilder'
 gem 'vite_rails'
 gem 'rack-cors'
 gem 'kaminari'
+gem 'ransack'
 
 group :development, :test do
   gem 'byebug'

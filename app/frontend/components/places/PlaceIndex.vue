@@ -5,6 +5,9 @@
         <router-link :to="{name: 'new_place_path'}"  class="button is-primary">Novo Local</router-link> 
       </div> 
     </div>
+
+    <filters :places="store.places" />
+    
     <div class="columns is-centered" ref="listing">
       <div class="column is-three-quarters">
         <table class="table">
@@ -36,10 +39,15 @@
 </template>
 <script>
 import { PlaceStore } from "@/stores/place_store";
+import Filters from '@/components/Filters.vue';
 
 import axios from 'axios';
 
 export default {
+  components: {
+    Filters
+  },
+
   setup() {
     const store = PlaceStore();
 
