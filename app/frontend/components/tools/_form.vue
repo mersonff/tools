@@ -6,14 +6,14 @@
           Local
         </p>
         <p class="subtitle">
-          {{ data.place.place_name }}
+          {{ data.tool.tool_name }}
         </p>
       </div>
     </section>
     <br>
     <div class="control">
       <label class="label">Nome</label>
-      <input type="text" name="name" id="name" class="input" v-model="data.place.name"/>
+      <input type="text" name="name" id="name" class="input" v-model="data.tool.name"/>
     </div>
     <br>
     <div class="field">
@@ -21,7 +21,7 @@
         <label class="label">Local</label>
         <p class="control has-icons-left">
           <span class="">
-            <v-select :options="ajaxOptions" v-model="data.place.place_id" :settings="{ ajax: ajax }" />
+            <v-select :options="ajaxOptions" v-model="data.tool.place_id" :settings="{ ajax: ajax }" />
           </span>
         </p>
       </div>
@@ -42,7 +42,7 @@ export default {
 
   data() {
       return {
-          place_id: '',
+          tool_id: '',
           ajaxOptions: [],
           ajax: {
             url: '/places',
@@ -81,4 +81,6 @@ export default {
   .edit-form {
     margin-top: 1rem;
   }
+
+  
 </style>

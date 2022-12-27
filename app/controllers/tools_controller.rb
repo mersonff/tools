@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 class ToolsController < ApplicationController
-  before_action :set_tool, only: %i[show update destroy]
+  before_action :set_tool, only: %i[show edit update destroy]
+
+  def new
+    @tool = Tool.new
+  end
 
   # GET /tools
   # GET /tools.json
