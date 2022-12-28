@@ -27,10 +27,10 @@ export const ToolStore = defineStore('tools', {
         this.tool = response.data.tool;
       })  
     },
-    async create() {
+    async create(params) {
       this.errors = {};
+
       return this.axios.post(`/tools`, this.tool).then(response => {        
-        debugger
         this.tool = response.data.tool;
         return true;
       }).catch(error => {

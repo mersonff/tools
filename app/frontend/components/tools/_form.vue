@@ -2,6 +2,11 @@
   <fieldset class="edit-form">
     <section class="hero is-info">
       <div class="hero-body">
+        <div
+          class="imagePreviewWrapper"
+          :style="{ 'background-image': `url(${data?.tool?.image_url || previewImage})` }"
+          @click="selectImage">
+        </div>
         <p class="title">
           Ferramenta: {{ data.tool.name }}
         </p>
@@ -46,6 +51,22 @@
         <v-select :options="ajaxOptions" v-model="data.tool.place_id" :settings="{ ajax: ajax }" class="select2-places"/>
       </div>
     </div>
+
+    <div class="file has-name">
+      <label class="file-label">
+        <input ref="fileInput"
+          type="file"
+          @input="pickFile" class="file-input">
+        <span class="file-cta">
+          <span class="file-icon">
+            <i class="fas fa-upload"></i>
+          </span>
+          <span class="file-label">
+            Escolha uma imagem
+          </span>
+        </span>
+      </label>
+    </div>
   </fieldset>
 </template>
 <script>
@@ -62,34 +83,62 @@ export default {
 
   data() {
       return {
-          tool_id: '',
-          ajaxOptions: [],
-          ajax: {
-            url: '/places',
-            method: 'GET',
-            data: function (params) {
-              return {
-                q: {
-                  name_cont: params.term
-                }
+        previewImage: null,
+        tool_id: '',
+        ajaxOptions: [],
+        ajax: {
+          url: '/places',
+          method: 'GET',
+          data: function (params) {
+            return {
+              q: {
+                name_cont: params.term
               }
-            },
-            processResults: function (data) {
-              return {
-                results: data.places.map (place => {
-                  return { id: place.id, text: place.name }
-                })
-              }
-            },
-            cache: true
+            }
           },
+          processResults: function (data) {
+            return {
+              results: data.places.map (place => {
+                return { id: place.id, text: place.name }
+              })
+            }
+          },
+          cache: true
+        },
         ajaxOptionsSelected: null    
       }
   },
+
+  methods: {
+    selectImage () {
+      this.$refs.fileInput.click()
+    },
+    pickFile () {
+      let input = this.$refs.fileInput
+      let file = input.files
+      if (file && file[0]) {
+        let reader = new FileReader
+        reader.onload = e => {
+          this.previewImage = e.target.result
+        }
+        reader.readAsDataURL(file[0])
+        this.$emit('input', file[0])
+      }
+    }
+  }
 }
 
 </script>
 <style>
+  .imagePreviewWrapper {
+    width: 250px;
+    height: 250px;
+    display: block;
+    cursor: pointer;
+    margin: 0 auto 30px;
+    background-size: cover;
+    background-position: center center;
+  }
   .buttons {
     margin-top: 1rem;
   }

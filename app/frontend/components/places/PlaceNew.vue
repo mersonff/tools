@@ -39,10 +39,9 @@
     },
 
     methods: {
-      create(form) {
-        this.$api.call(this.store.create(form)).then(response => {
+      create() {
+        this.$api.call(this.store.create()).then(response => {
           if(response === true) {
-            debugger
             this.$router.push({name: 'edit_place_path', params: {id: this.store.place.id}})
           }
         })

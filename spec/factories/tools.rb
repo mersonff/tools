@@ -8,5 +8,6 @@ FactoryBot.define do
     kind { :mouse }
     observations { Faker::Lorem.paragraph(sentence_count: 2) }
     place { create(:place) }
+    image { Rack::Test::UploadedFile.new(Rails.root.join('spec/support/images/product_image.png'), 'image/png') }
   end
 end

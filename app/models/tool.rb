@@ -3,6 +3,8 @@
 class Tool < ApplicationRecord
   belongs_to :place
 
+  has_one_attached :image
+
   enum kind: { air_conditioning: 0, pc: 1, monitor: 2, mouse: 3, keyboard: 4, tv: 5, router: 6, coffee_maker: 7 },
     _default: 0
 
