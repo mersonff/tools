@@ -1,3 +1,10 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  get 'pages/home', to: 'home#index'
+  defaults format: :json do
+    resources :places
+    resources :tools
+  end
+  root to: 'application#index'
+  get '*path', to: 'application#index', format: false
 end

@@ -1,24 +1,34 @@
-# README
+# Tools APP
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Stack
+- Rails 7
+- PostgreSQL
+- RSpec
+- Bulma
+- Vue 3
+- Pinia
 
-Things you may want to cover:
+## Usando
+Cria os bancos de dados:
+```
+rails db:create
+rails db:create RAILS_ENV=test
+```
 
-* Ruby version
+Instalando as dependências
+```
+bundle install
+yarn install
+```
 
-* System dependencies
+No terminal, na pasta raiz do projeto rode o seguinte comando
+```
+foreman start -f Procfile.dev
+```
 
-* Configuration
+## Testes
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+No terminal
+```
+rspec
+```
