@@ -14,7 +14,7 @@ Api.prototype.install = function (app) {
 }
 
 export function createApi(args) {
-  args.handler.defaults.baseURL = 'http://localhost:3000';
+  args.handler.defaults.baseURL = `${window.location.protocol}/api/${args.namespace}/`;
   args.handler.defaults.headers.common['X-CSRF-Token'] = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
   args.handler.interceptors.response.use(
     (response) => {

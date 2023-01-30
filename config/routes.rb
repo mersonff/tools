@@ -1,10 +1,13 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  defaults format: :json do
-    resources :places
-    resources :tools
+
+  namespace :api, :defaults => { :format => 'json' } do
+    namespace :admin do
+      resources :places
+      resources :tools
+    end
   end
-  root to: 'application#index'
-  get '*path', to: 'application#index', format: false
+  get '/admin', to: 'admin#index'
+  match "/admin/*path", to: "admin#index", format: false, via: :get
 end

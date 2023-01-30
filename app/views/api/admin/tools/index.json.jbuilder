@@ -11,6 +11,6 @@ json.kinds Tool.kinds.each do |kind, key|
   json.name t(kind, scope: 'kinds')
 end
 
-json.partial! partial: 'shared/pagination', locals: {
+json.partial! partial: '/api/admin/shared/pagination', locals: {
   kind: @tools
 }

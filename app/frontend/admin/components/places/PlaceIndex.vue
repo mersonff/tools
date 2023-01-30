@@ -38,8 +38,8 @@
   </div>
 </template>
 <script>
-import { PlaceStore } from "@/stores/place_store";
-import Filters from '@/components/Filters.vue';
+import { PlaceStore } from "@/admin/stores/place_store";
+import Filters from '@/admin/components/Filters.vue';
 
 import axios from 'axios';
 
@@ -67,7 +67,7 @@ export default {
     async deletePlace(id) {
       if (confirm('Tenha certeza que deseja apagar esse local?')) {
         try {
-          await axios.delete(`/places/${id}`);
+          await axios.delete(`/api/places/${id}`);
           await this.index();
         } catch (error) {
           console.error(error);

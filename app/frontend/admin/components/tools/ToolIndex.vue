@@ -38,8 +38,8 @@
   </div>
 </template>
 <script>
-import { ToolStore } from "@/stores/tool_store";
-import Filters from '@/components/Filters.vue';
+import { ToolStore } from "@/admin/stores/tool_store";
+import Filters from '@/admin/components/Filters.vue';
 
 import axios from 'axios';
 

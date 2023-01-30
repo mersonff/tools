@@ -28,29 +28,34 @@ console.log('Visit the guide for more information: ', 'https://vite-ruby.netlify
 // import '~/index.css'
 
 import { createApp } from 'vue';
-import AppLayout from '@/components/AppLayout.vue';
-import Router from '@/routes.js';
+const app = createApp(AppLayout)
+
+import Router from '@/admin/routes.js';
+import AppLayout from '@/admin/components/AppLayout.vue';
 import Axios from "axios";
-import VueSelect2 from 'vue3-select2-component';
-import $ from 'jquery';
-import select2 from 'select2';
+
+import { createApi } from '@/plugins/api';
+const Api = createApi({handler: Axios, namespace: 'admin' });
 
 import { createPinia } from 'pinia';
 const Pinia = createPinia();
 Pinia.use(({ store }) => { store.axios = Axios })
 
-import { createApi } from '@/plugins/api';
-const Api = createApi({handler: Axios, namespace: ''});
+import Pagination from '@/admin/components/Pagination.vue'
+app.component('pagination', Pagination)
 
-const app = createApp(AppLayout)
+import VueSelect2 from 'vue3-select2-component';
+app.component("v-select", VueSelect2)
 
-import Pagination from '@/components/Pagination.vue'
+import $ from 'jquery';
+import select2 from 'select2';
+
+
+
 
 app.use(Router)
    .use($)
    .use(select2)
-   .component("v-select", VueSelect2)
-   .component('pagination', Pagination)
    .use(Pinia)
    .use(Api)
    .mount('#app');

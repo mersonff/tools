@@ -28,6 +28,7 @@ gem 'kaminari'
 gem 'rack-cors'
 gem 'ransack'
 gem 'vite_rails'
+gem "sassc-rails"
 
 group :development, :test do
   gem 'byebug'

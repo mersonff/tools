@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class PlacesController < ApplicationController
+class Api::Admin::PlacesController < Api::Admin::AdminController
   before_action :set_place, only: %i[show edit update destroy]
 
   # GET /places

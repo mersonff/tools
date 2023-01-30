@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-
-class ToolsController < ApplicationController
+class Api::Admin::ToolsController < Api::Admin::AdminController
   before_action :set_tool, only: %i[show edit update destroy]
 
   # GET /tools
@@ -11,7 +9,7 @@ class ToolsController < ApplicationController
       .result
       .order(:name)
       .page(params[:page])
-      .per(params[:per_page])
+      .per(params[:per_page])    
   end
 
   # GET /tools/1

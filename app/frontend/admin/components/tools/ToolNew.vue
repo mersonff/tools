@@ -3,7 +3,7 @@
     <div class="columns is-centered">
       <div class="column is-three-quarters">
         <form ref="form" @submit.prevent="create" accept-charset="UTF-8">
-          <PlacesForm :data="store" />
+          <ToolsForm :data="store" />
 
           <div class="field is-grouped buttons">
             <div class="is-one-quarter"></div>
@@ -11,7 +11,7 @@
               <input type="submit" value="Salvar" class="button is-link"/>      
             </div>
             <div class="control">
-              <router-link :to="{ name: 'places_path' }" class="button is-link is-light">Cancelar</router-link>
+              <router-link :to="{ name: 'tools_path' }" class="button is-link is-light">Cancelar</router-link>
             </div>
           </div>
         </form>
@@ -20,16 +20,16 @@
   </div>
 </template>
 <script>
-  import { PlaceStore } from '@/stores/place_store.js'
-  import PlacesForm from './_form.vue'
+  import { ToolStore } from '@/admin/stores/tool_store.js'
+  import ToolsForm from './_form.vue'
 
   export default {
     components: {
-      PlacesForm
+      ToolsForm
     },
 
     setup() {
-      const store = PlaceStore();
+      const store = ToolStore();
 
       return { store }
     },
@@ -39,10 +39,10 @@
     },
 
     methods: {
-      create() {
-        this.$api.call(this.store.create()).then(response => {
+      create(form) {
+        this.$api.call(this.store.create(form)).then(response => {
           if(response === true) {
-            this.$router.push({name: 'edit_place_path', params: {id: this.store.place.id}})
+            this.$router.push({name: 'edit_tool_path', params: {id: this.store.tool.id}})
           }
         })
       }
